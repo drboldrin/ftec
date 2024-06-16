@@ -1,0 +1,75 @@
+inherited FormCadBomba: TFormCadBomba
+  Caption = 'Cadastro de Bombas de Combust'#237'veis'
+  TextHeight = 15
+  inherited pnlBotoes: TPanel
+    ExplicitLeft = 0
+    ExplicitTop = 292
+    ExplicitWidth = 486
+    inherited btnFechar: TBitBtn
+      Left = 401
+      ExplicitLeft = 397
+    end
+  end
+  inherited pgTela: TPageControl
+    ActivePage = tbsRegistro
+    ExplicitWidth = 486
+    ExplicitHeight = 292
+    inherited tbsGrid: TTabSheet
+      inherited pnlPesquisa: TPanel
+        ExplicitLeft = 0
+        ExplicitTop = -6
+        ExplicitWidth = 482
+        object Label1: TLabel [0]
+          Left = 24
+          Top = 12
+          Width = 41
+          Height = 15
+          Caption = 'Bomba:'
+        end
+        inherited btnFiltro: TBitBtn
+          TabOrder = 1
+          OnClick = btnFiltroClick
+          ExplicitLeft = 397
+        end
+        object edtFiltro: TEdit
+          Left = 71
+          Top = 9
+          Width = 319
+          Height = 23
+          Anchors = [akLeft, akTop, akRight]
+          TabOrder = 0
+          OnExit = edtFiltroExit
+        end
+      end
+      inherited GridRegistros: TDBGrid
+        OnDblClick = GridRegistrosDblClick
+      end
+    end
+    inherited tbsRegistro: TTabSheet
+      object ComboBox1: TComboBox
+        Left = 64
+        Top = 96
+        Width = 145
+        Height = 23
+        TabOrder = 0
+        Text = 'ComboBox1'
+      end
+      object Edit1: TEdit
+        Left = 72
+        Top = 16
+        Width = 121
+        Height = 23
+        TabOrder = 1
+        Text = 'Edit1'
+      end
+      object Edit2: TEdit
+        Left = 72
+        Top = 176
+        Width = 121
+        Height = 23
+        TabOrder = 2
+        Text = 'Edit2'
+      end
+    end
+  end
+end

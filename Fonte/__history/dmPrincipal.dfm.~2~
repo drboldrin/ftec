@@ -1,0 +1,18 @@
+object DataModule1: TDataModule1
+  Height = 195
+  Width = 288
+  object Connection: TFDConnection
+    Left = 40
+    Top = 32
+  end
+  object Transact: TFDTransaction
+    Connection = Connection
+    Left = 88
+    Top = 32
+  end
+  object Query: TFDQuery
+    Connection = Connection
+    Left = 48
+    Top = 96
+  end
+end

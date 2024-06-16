@@ -1,0 +1,18 @@
+program PostoAbc;
+
+uses
+  Vcl.Forms,
+  uPrincipal in '..\uPrincipal.pas' {FormPrincipal},
+  dmPrincipal in '..\dmPrincipal.pas' {DM: TDataModule},
+  uCadastros in '..\FormBase\uCadastros.pas' {Form1};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TDM, DM);
+  Application.CreateForm(TFormPrincipal, FormPrincipal);
+  Application.CreateForm(TForm1, Form1);
+  Application.Run;
+end.

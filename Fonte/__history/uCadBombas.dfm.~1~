@@ -1,0 +1,43 @@
+inherited FormCadBomba: TFormCadBomba
+  Caption = 'Cadastro de Bombas de Combust'#237'veis'
+  TextHeight = 15
+  inherited pnlBotoes: TPanel
+    ExplicitLeft = 0
+    ExplicitTop = 292
+    ExplicitWidth = 486
+    inherited btnFechar: TBitBtn
+      Left = 401
+      ExplicitLeft = 397
+    end
+  end
+  inherited pgTela: TPageControl
+    ExplicitWidth = 486
+    ExplicitHeight = 292
+    inherited tbsGrid: TTabSheet
+      inherited pnlPesquisa: TPanel
+        ExplicitLeft = 0
+        ExplicitTop = -6
+        ExplicitWidth = 482
+        object Label1: TLabel [0]
+          Left = 24
+          Top = 12
+          Width = 41
+          Height = 15
+          Caption = 'Bomba:'
+        end
+        inherited btnFiltro: TBitBtn
+          ExplicitLeft = 397
+        end
+        object edtFiltro: TEdit
+          Left = 72
+          Top = 9
+          Width = 319
+          Height = 23
+          Anchors = [akLeft, akTop, akRight]
+          TabOrder = 1
+          ExplicitWidth = 329
+        end
+      end
+    end
+  end
+end

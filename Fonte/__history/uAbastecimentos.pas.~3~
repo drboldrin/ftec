@@ -1,0 +1,71 @@
+unit uAbastecimentos;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uCadastros, Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.ComCtrls, Vcl.Buttons,
+  Vcl.ExtCtrls;
+
+type
+  TFormAbastecimentos = class(TFormPadrao)
+    procedure btnFiltroClick(Sender: TObject);
+  private
+    { Private declarations }
+    procedure InicializarTela;
+    procedure NovoRegistro;
+  public
+    { Public declarations }
+  end;
+
+var
+  FormAbastecimentos: TFormAbastecimentos;
+
+implementation
+
+{$R *.dfm}
+
+{ TFormPadrao1 }
+
+procedure TFormAbastecimentos.btnFiltroClick(Sender: TObject);
+  function ValidaData(Value:string):Boolean;
+  begin
+    Result := false;
+    try
+      StrToDate(Value);
+      Result := true;
+    except
+      Result := false;
+    end;
+  end;
+begin
+  inherited;
+  if not (SameText(Trim(edtFiltro.Text),'')) then
+  begin
+    if ValidaData(edtFiltro.Text) then
+    begin
+      QGrid.Filtered := false;
+      QGrid.Filter := 'Dia = '+QuotedStr(edtFiltro.Text);
+      QGrid.Filtered := true;
+    end
+    else
+    begin
+      MessageDlg('Informe uma data válida!',TMsgDlgType.mtWarning,[TMsgDlgBtn.mbOK],0,TMsgDlgBtn.mbOK);
+      edtFiltro.SetFocus;
+    end;
+  end
+  else
+    QGrid.Filtered := false;
+end;
+
+procedure TFormAbastecimentos.InicializarTela;
+begin
+
+end;
+
+procedure TFormAbastecimentos.NovoRegistro;
+begin
+
+end;
+
+end.

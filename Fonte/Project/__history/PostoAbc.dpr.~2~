@@ -1,0 +1,17 @@
+program PostoAbc;
+
+uses
+  Vcl.Forms,
+  uPrincipal in '..\uPrincipal.pas' {FormPrincipal},
+  dmPrincipal in '..\dmPrincipal.pas' {DM: TDataModule};
+
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TDM, DM);
+  Application.CreateForm(TFormPrincipal, FormPrincipal);
+  Application.Run;
+end.

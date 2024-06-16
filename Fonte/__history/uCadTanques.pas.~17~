@@ -1,0 +1,124 @@
+unit uCadTanques;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uCadastros, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls, Data.DB, Vcl.Grids,
+  Vcl.DBGrids, FireDAC.Stan.Param, StrUtils;
+
+type
+  TFormCadTanques = class(TFormPadrao)
+    lblCodigo: TLabel;
+    lblDescTanque: TLabel;
+    edtCodigo: TEdit;
+    edtDescTanque: TEdit;
+    procedure btnAlterarClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure btnExcluirClick(Sender: TObject);
+    procedure btnFiltroClick(Sender: TObject);
+  private
+    { Private declarations }
+    procedure InicializarTela;
+    procedure NovoRegistro;
+    procedure VisualizarRegistro(pCodigo:integer);
+    procedure AlterarRegistro();
+    procedure ExcluirRegistro(pCodigo:integer);
+  public
+    { Public declarations }
+  end;
+
+var
+  FormCadTanques: TFormCadTanques;
+
+const
+  SqlCRUDTanque = 'SELECT T.Id, T.DescTanque FROM TANQUES T WHERE T.Id = :pCodigo';
+  SqlTanque = 'SELECT T.Id, T.DescTanque FROM TANQUES T';
+
+implementation
+
+{$R *.dfm}
+
+procedure TFormCadTanques.AlterarRegistro();
+begin
+  try
+    QGrid.Post;
+    QGrid.Transaction.CommitRetaining;
+    QGrid.Refresh;
+    ControleDosBotoes(tmInicial);
+    tbsGrid.Show;
+  except
+    QGrid.Transaction.Rollback;
+  end;
+end;
+
+procedure TFormCadTanques.btnAlterarClick(Sender: TObject);
+begin
+  inherited;
+  if not QGrid.IsEmpty then
+    VisualizarRegistro(QGrid.FieldByName('ID').AsInteger);
+end;
+
+procedure TFormCadTanques.btnExcluirClick(Sender: TObject);
+begin
+  inherited;
+  if not QGrid.IsEmpty then
+    ExcluirRegistro(QGrid.FieldByName('ID').AsInteger);
+end;
+
+procedure TFormCadTanques.btnFiltroClick(Sender: TObject);
+begin
+  inherited;
+  if not (SameText(Trim(edtFiltro.Text),'')) then
+  begin
+    QGrid.Filtered := false;
+    QGrid.Filter := 'DescTanque Like '+QuotedStr('%'+edtFiltro.Text+'%');
+    QGrid.Filtered := true;
+  end
+  else
+    QGrid.Filtered := false;
+
+end;
+
+procedure TFormCadTanques.ExcluirRegistro(pCodigo: integer);
+begin
+
+end;
+
+procedure TFormCadTanques.FormCreate(Sender: TObject);
+begin
+  inherited;
+  InicializarTela;
+end;
+
+procedure TFormCadTanques.InicializarTela;
+var
+i:integer;
+Coluna:TColumn;
+begin
+  QGrid.SQL.Clear;
+  QGrid.SQL.Add(SqlTanque);
+  QGrid.Open;
+  DtsGrid.DataSet := QGrid;
+  GridRegistros.DataSource := DtsGrid;
+  for i := 0 to QGrid.FieldCount-1 do
+  begin
+    Coluna           := GridRegistros.Columns.Add();
+    Coluna.FieldName := QGrid.Fields[i].FieldName;
+    Coluna.Title.Caption := IfThen(SameText(UpperCase(QGrid.Fields[i].FieldName),'ID'),'Código','Descrição do Tanque');
+  end;
+
+
+end;
+
+procedure TFormCadTanques.NovoRegistro;
+begin
+  NovoRegistro;
+end;
+
+procedure TFormCadTanques.VisualizarRegistro(pCodigo: integer);
+begin
+
+end;
+
+end.

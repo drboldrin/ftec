@@ -1,0 +1,32 @@
+inherited FormAbastecimentos: TFormAbastecimentos
+  Caption = 'Abastecimentos'
+  TextHeight = 15
+  inherited pgTela: TPageControl
+    ExplicitWidth = 486
+    inherited tbsGrid: TTabSheet
+      inherited pnlPesquisa: TPanel
+        inherited Label1: TLabel
+          Left = 7
+          Top = 13
+          Width = 70
+          Caption = 'Filtro por dia:'
+          ExplicitLeft = 7
+          ExplicitTop = 13
+          ExplicitWidth = 70
+        end
+        inherited btnFiltro: TBitBtn
+          OnClick = btnFiltroClick
+        end
+        inherited edtFiltro: TEdit
+          Left = 84
+          Width = 309
+          Hint = 'Filtro apenas por data'
+          ParentShowHint = False
+          ShowHint = True
+          ExplicitLeft = 84
+          ExplicitWidth = 309
+        end
+      end
+    end
+  end
+end

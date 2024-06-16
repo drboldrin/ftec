@@ -1,0 +1,155 @@
+unit uAbastecimentos;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uCadastros, Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.ComCtrls, Vcl.Buttons,
+  Vcl.ExtCtrls, dmPrincipal, StrUtils, UITypes, Vcl.Mask, Vcl.DBCtrls, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client;
+
+type
+  TFormAbastecimentos = class(TFormPadrao)
+    DBEdit1: TDBEdit;
+    DBEdit2: TDBEdit;
+    DBEdit3: TDBEdit;
+    DBEdit4: TDBEdit;
+    DBEdit5: TDBEdit;
+    DBEdit6: TDBEdit;
+    CblBombas: TDBLookupComboBox;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    procedure btnFiltroClick(Sender: TObject);
+    procedure btnNovoClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+    FQBombas: TFDQuery;
+    FDtsBombas: TDataSource;
+    procedure InicializarTela;
+    procedure CarregaListBombas;
+    procedure FormataCamposQuery(DataSet:TDataSet);
+    procedure NovoRegistro;
+  public
+    { Public declarations }
+  end;
+
+var
+  FormAbastecimentos: TFormAbastecimentos;
+
+implementation
+
+{$R *.dfm}
+
+{ TFormPadrao1 }
+
+procedure TFormAbastecimentos.btnFiltroClick(Sender: TObject);
+  function ValidaData(Value:string):Boolean;
+  begin
+    try
+      StrToDate(Value);
+      Result := true;
+    except
+      Result := false;
+    end;
+  end;
+begin
+  inherited;
+  if not (SameText(Trim(edtFiltro.Text),'')) then
+  begin
+    if ValidaData(edtFiltro.Text) then
+    begin
+      QGrid.Filtered := false;
+      QGrid.Filter   := 'Dia = '+QuotedStr(edtFiltro.Text);
+      QGrid.Filtered := true;
+    end
+    else
+    begin
+      MessageDlg('Informe uma data válida!',TMsgDlgType.mtWarning,[TMsgDlgBtn.mbOK],0,TMsgDlgBtn.mbOK);
+      edtFiltro.SetFocus;
+    end;
+  end
+  else
+    QGrid.Filtered := false;
+end;
+
+procedure TFormAbastecimentos.btnNovoClick(Sender: TObject);
+begin
+  inherited;
+  NovoRegistro;
+end;
+
+procedure TFormAbastecimentos.CarregaListBombas;
+begin
+  FQBombas := TFDQuery.Create(nil);
+  FQBombas.Connection := dm.Connection;
+  FQBombas.SQL.Clear;
+  FQBombas.SQL.Add(dm.SQLBombas);
+  FQBombas.Open;
+  FDtsBombas := TDataSource.Create(nil);
+  FDtsBombas.DataSet   := FQBombas;
+  CblBombas.ListSource := FDtsBombas;
+end;
+
+procedure TFormAbastecimentos.FormataCamposQuery(DataSet:TDataSet);
+begin
+  DataSet.FieldByName('Dia').EditMask := '!99/99/9999';
+  TFloatField(DataSet.FieldByName('Valor')).currency    := True;
+  TFloatField(DataSet.FieldByName('Imposto')).currency  := True;
+  TFloatField(DataSet.FieldByName('Aliquota')).Precision := 2;
+
+end;
+
+procedure TFormAbastecimentos.FormCreate(Sender: TObject);
+begin
+  inherited;
+  InicializarTela;
+  CarregaListBombas;
+
+end;
+
+procedure TFormAbastecimentos.InicializarTela;
+var
+i:integer;
+Coluna:TColumn;
+begin
+  QGrid.AfterOpen := FormataCamposQuery;
+  QGrid.SQL.Clear;
+  QGrid.SQL.Add(dm.SQLAbastecimento);
+  QGrid.Open;
+
+  for i := 0 to QGrid.FieldCount-1 do
+  begin
+    Coluna           := GridRegistros.Columns.Add();
+    Coluna.FieldName := QGrid.Fields[i].FieldName;
+    case IndexStr(UpperCase(QGrid.Fields[i].FieldName),['ID','ID_BOMBA','DESCBOMBA','DIA','LITROS','VALOR','ALIQUOTA','IMPOSTO']) of
+      0:Coluna.Title.Caption := 'Código';
+      1:Coluna.Visible       := false;
+      2: begin
+        Coluna.Title.Caption := 'Bomba';
+        Coluna.Width         := 120;
+      end;
+      3:Coluna.Title.Caption := 'Dia';
+      4:Coluna.Title.Caption := 'Litros';
+      5:Coluna.Title.Caption := 'Valor';
+      6:Coluna.Title.Caption := 'Aliquota';
+      7:Coluna.Title.Caption := 'Imposto';
+    end;
+  end;
+
+end;
+
+procedure TFormAbastecimentos.NovoRegistro;
+begin
+  QGrid.Transaction.StartTransaction;
+  QGrid.Append;
+  QGrid.FieldByName('Id').AsInteger := NovoId('ABASTECIMENTOS');
+end;
+
+end.

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2024/06/15 19:35:15.000.346,=C:\FortesTec\Fonte\project\Unit1.pas</Transaction>
+    <Transaction>2024/06/15 19:39:09.000.737,C:\FortesTec\Fonte\uPrincipal.dfm=C:\FortesTec\Fonte\project\Unit1.dfm</Transaction>
+    <Transaction>2024/06/15 19:39:09.000.737,C:\FortesTec\Fonte\uPrincipal.pas=C:\FortesTec\Fonte\project\Unit1.pas</Transaction>
+    <Transaction>2024/06/15 19:49:01.000.294,C:\FortesTec\Fonte\Project\PostoAbc.dproj=C:\FortesTec\Fonte\project\Project1.dproj</Transaction>
+    <Transaction>2024/06/15 20:43:00.000.610,=C:\FortesTec\Fonte\project\Unit1.pas</Transaction>
+    <Transaction>2024/06/15 20:43:16.000.260,C:\FortesTec\Fonte\project\Unit1.pas=C:\FortesTec\Fonte\dmPrincipal.pas</Transaction>
+    <Transaction>2024/06/15 20:43:16.000.260,C:\FortesTec\Fonte\project\Unit1.dfm=C:\FortesTec\Fonte\dmPrincipal.dfm</Transaction>
+    <Transaction>2024/06/15 21:50:44.000.669,=C:\FortesTec\Fonte\project\Unit1.pas</Transaction>
+    <Transaction>2024/06/15 22:12:21.000.949,C:\FortesTec\Fonte\project\Unit1.pas=C:\FortesTec\Fonte\uConfigBanco.pas</Transaction>
+    <Transaction>2024/06/15 22:12:21.000.949,C:\FortesTec\Fonte\project\Unit1.dfm=C:\FortesTec\Fonte\uConfigBanco.dfm</Transaction>
+    <Transaction>2024/06/16 08:45:55.648,=C:\FortesTec\Fonte\project\Unit1.pas</Transaction>
+    <Transaction>2024/06/16 09:06:45.543,C:\FortesTec\Fonte\FormBase\uCadastros.pas=C:\FortesTec\Fonte\project\Unit1.pas</Transaction>
+    <Transaction>2024/06/16 09:06:45.543,C:\FortesTec\Fonte\FormBase\uCadastros.dfm=C:\FortesTec\Fonte\project\Unit1.dfm</Transaction>
+    <Transaction>2024/06/16 09:17:42.408,=C:\FortesTec\Fonte\project\Unit1.pas</Transaction>
+    <Transaction>2024/06/16 09:20:29.669,C:\FortesTec\Fonte\uCadTanques.dfm=C:\FortesTec\Fonte\project\Unit1.dfm</Transaction>
+    <Transaction>2024/06/16 09:20:29.669,C:\FortesTec\Fonte\uCadTanques.pas=C:\FortesTec\Fonte\project\Unit1.pas</Transaction>
+    <Transaction>2024/06/16 11:56:55.981,=C:\FortesTec\Fonte\project\Unit1.pas</Transaction>
+    <Transaction>2024/06/16 11:57:14.205,=C:\FortesTec\Fonte\project\Unit1.pas</Transaction>
+    <Transaction>2024/06/16 11:59:15.126,C:\FortesTec\Fonte\uCadBombas.pas=C:\FortesTec\Fonte\project\Unit1.pas</Transaction>
+    <Transaction>2024/06/16 11:59:15.126,C:\FortesTec\Fonte\uCadBombas.dfm=C:\FortesTec\Fonte\project\Unit1.dfm</Transaction>
+    <Transaction>2024/06/16 14:14:23.730,=C:\FortesTec\Fonte\project\Unit1.pas</Transaction>
+    <Transaction>2024/06/16 14:14:45.077,C:\FortesTec\Fonte\uAbastecimentos.pas=C:\FortesTec\Fonte\project\Unit1.pas</Transaction>
+    <Transaction>2024/06/16 14:14:45.077,C:\FortesTec\Fonte\uAbastecimentos.dfm=C:\FortesTec\Fonte\project\Unit1.dfm</Transaction>
+    <Transaction>2024/06/16 16:29:53.901,=C:\FortesTec\Fonte\project\Unit1.pas</Transaction>
+    <Transaction>2024/06/16 17:28:55.252,C:\FortesTec\Fonte\uRelatorio.dfm=C:\FortesTec\Fonte\project\Unit1.dfm</Transaction>
+    <Transaction>2024/06/16 17:28:55.252,C:\FortesTec\Fonte\uRelatorio.pas=C:\FortesTec\Fonte\project\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>

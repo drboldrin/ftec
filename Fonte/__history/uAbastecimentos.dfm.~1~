@@ -1,0 +1,7 @@
+inherited FormPadrao1: TFormPadrao1
+  Caption = 'FormPadrao1'
+  TextHeight = 15
+  inherited pgTela: TPageControl
+    ExplicitWidth = 486
+  end
+end

@@ -1,0 +1,73 @@
+inherited FormCadBomba: TFormCadBomba
+  Caption = 'Cadastro de Bombas de Combust'#237'veis'
+  TextHeight = 15
+  inherited pnlBotoes: TPanel
+    ExplicitLeft = 0
+    ExplicitTop = 292
+    ExplicitWidth = 486
+    inherited btnFechar: TBitBtn
+      Left = 401
+      ExplicitLeft = 397
+    end
+  end
+  inherited pgTela: TPageControl
+    ActivePage = tbsRegistro
+    ExplicitWidth = 486
+    ExplicitHeight = 292
+    inherited tbsGrid: TTabSheet
+      inherited pnlPesquisa: TPanel
+        ExplicitLeft = 0
+        ExplicitTop = -6
+        ExplicitWidth = 482
+        inherited btnFiltro: TBitBtn
+          OnClick = btnFiltroClick
+          ExplicitLeft = 397
+        end
+      end
+    end
+    inherited tbsRegistro: TTabSheet
+      object Label2: TLabel
+        Left = 72
+        Top = 48
+        Width = 42
+        Height = 15
+        Caption = 'C'#243'digo:'
+      end
+      object Label3: TLabel
+        Left = 72
+        Top = 104
+        Width = 41
+        Height = 15
+        Caption = 'Tanque:'
+      end
+      object Label4: TLabel
+        Left = 72
+        Top = 152
+        Width = 197
+        Height = 15
+        Caption = 'Descri'#231#227'o da Bomba de Combust'#237'vel:'
+      end
+      object cbTanque: TComboBox
+        Left = 72
+        Top = 123
+        Width = 145
+        Height = 23
+        TabOrder = 0
+      end
+      object edtCodigo: TEdit
+        Left = 72
+        Top = 70
+        Width = 85
+        Height = 23
+        TabOrder = 1
+      end
+      object edtDescBomba: TEdit
+        Left = 72
+        Top = 176
+        Width = 361
+        Height = 23
+        TabOrder = 2
+      end
+    end
+  end
+end

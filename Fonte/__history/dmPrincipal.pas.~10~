@@ -1,0 +1,65 @@
+unit dmPrincipal;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf,
+  FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.VCLUI.Wait, FireDAC.Stan.Param, FireDAC.DatS,
+  FireDAC.DApt.Intf, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+
+type
+  TConfigBanco = record
+    DriverId, DataBase, UserName, Password:string;
+  end;
+
+  TDM = class(TDataModule)
+    Connection: TFDConnection;
+    Transact: TFDTransaction;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    function ConectarComBancoDeDados():Boolean;
+    procedure DesconectarBancoDeDados();
+
+  end;
+
+var
+  DM: TDM;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+uses IniFiles;
+
+{ TDataModule1 }
+
+function TDM.ConectarComBancoDeDados(): Boolean;
+begin
+  Result := false;
+  try
+    Connection.Params.Clear;
+    Connection.Params.Add('DriverId=FB');
+    Connection.Params.Add('Server=localhost');
+    Connection.Params.Add('DataBase=C:\FortesTec\DB\POSTOABC.FDB');
+    Connection.Params.Add('User_Name=SYSDBA');
+    Connection.Params.Add('Password=masterkey');
+    Connection.Open;
+    Result := true;
+  except on E:Exception do
+    Assert(false,'Falha ao tentar conectar ao banco de dados: Mensagem: '+#10#13+E.Message);
+  end;
+end;
+
+procedure TDM.DesconectarBancoDeDados;
+begin
+  if Connection.Connected then
+    Connection.Close;
+end;
+
+
+
+end.
