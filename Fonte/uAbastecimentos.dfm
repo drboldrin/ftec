@@ -1,11 +1,17 @@
 inherited FormAbastecimentos: TFormAbastecimentos
   Caption = 'Abastecimentos'
   TextHeight = 15
+  inherited pnlBotoes: TPanel
+    inherited btnFechar: TBitBtn
+      Left = 397
+      ExplicitLeft = 393
+    end
+  end
   inherited pgTela: TPageControl
     ActivePage = tbsRegistro
-    ExplicitWidth = 486
     inherited tbsGrid: TTabSheet
       inherited pnlPesquisa: TPanel
+        ExplicitWidth = 482
         inherited Label1: TLabel
           Left = 7
           Top = 13
@@ -17,6 +23,7 @@ inherited FormAbastecimentos: TFormAbastecimentos
         end
         inherited btnFiltro: TBitBtn
           OnClick = btnFiltroClick
+          ExplicitLeft = 401
         end
         inherited edtFiltro: TEdit
           Left = 84

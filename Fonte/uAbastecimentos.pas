@@ -102,12 +102,12 @@ end;
 
 procedure TFormAbastecimentos.CarregaListBombas;
 begin
-  FQBombas := TFDQuery.Create(nil);
+  FQBombas            := TFDQuery.Create(nil);
   FQBombas.Connection := dm.Connection;
   FQBombas.SQL.Clear;
   FQBombas.SQL.Add(dm.SQLBombas);
   FQBombas.Open;
-  FDtsBombas := TDataSource.Create(nil);
+  FDtsBombas           := TDataSource.Create(nil);
   FDtsBombas.DataSet   := FQBombas;
   CblBombas.ListSource := FDtsBombas;
 end;
@@ -147,12 +147,13 @@ end;
 
 procedure TFormAbastecimentos.InicializarTela;
 var
-i:integer;
-Coluna:TColumn;
+  i:integer;
+  Coluna:TColumn;
 begin
-  QGrid.AfterOpen := FormataCamposQuery;
+  QGrid.AfterOpen := nil;
   QGrid.SQL.Clear;
   QGrid.SQL.Add(dm.SQLAbastecimento);
+  QGrid.AfterOpen := FormataCamposQuery;
   QGrid.Open;
 
   for i := 0 to QGrid.FieldCount-1 do

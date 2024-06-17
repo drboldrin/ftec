@@ -133,6 +133,7 @@ object FormRelatorio: TFormRelatorio
         Top = 0
         Width = 42
         Height = 15
+        Alignment = taRightJustify
         DataField = 'VALOR'
         DataSource = DtsRelatorio
         Text = ''
@@ -158,12 +159,14 @@ object FormRelatorio: TFormRelatorio
       Font.Style = [fsBold]
       ParentFont = False
       object RLDBResult1: TRLDBResult
-        Left = 608
+        Left = 387
         Top = 0
-        Width = 84
+        Width = 273
         Height = 16
+        Alignment = taRightJustify
         DataField = 'VALOR'
         DataSource = DtsRelatorio
+        DisplayMask = '###,##0.00'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -12
@@ -171,7 +174,7 @@ object FormRelatorio: TFormRelatorio
         Font.Style = [fsBold]
         Info = riSum
         ParentFont = False
-        Text = ''
+        Text = 'Valor Total do Per'#237'odo:    '
         OnCompute = RLDBResult1Compute
       end
     end
@@ -186,8 +189,9 @@ object FormRelatorio: TFormRelatorio
       'FROM abastecimentos A'
       'INNER JOIN BOMBAS B ON B.id = A.id_bomba'
       'INNER JOIN TANQUES T ON T.id = B.id_tanque'
-      'GROUP BY A.DIA, T.desctanque, B.descbomba')
-    Left = 176
+      'GROUP BY A.DIA, T.desctanque, B.descbomba'
+      'order by A.dia, T.DESCTANQUE')
+    Left = 184
     Top = 232
     object QRelatorioDIA: TDateField
       FieldName = 'DIA'

@@ -27,6 +27,8 @@ type
     btnFiltro: TBitBtn;
     edtFiltro: TEdit;
     Label1: TLabel;
+    FDQuery1: TFDQuery;
+    FDUpdateSQL1: TFDUpdateSQL;
     procedure btnFecharClick(Sender: TObject);
     procedure btnExcluirClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -120,8 +122,9 @@ begin
 
   try
     QGrid.Post;
-    QGrid.Transaction.CommitRetaining;
-    QGRID.Refresh;
+    QGrid.Transaction.Commit;
+    QGrid.Refresh;
+
     ControleDosBotoes(tmInicial);
   except
     QGrid.Transaction.Rollback;
@@ -180,7 +183,10 @@ end;
 procedure TFormPadrao.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   if (QGrid.State in [dsInsert,dsEdit]) then
+  begin
+     QGrid.Cancel;
      QGrid.Transaction.Rollback;
+  end;
 end;
 
 procedure TFormPadrao.FormCreate(Sender: TObject);

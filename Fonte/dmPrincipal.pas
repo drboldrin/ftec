@@ -56,7 +56,7 @@ end;
 
 function TDM.SQLAbastecimento: String;
 begin
-  Result := 'SELECT A.ID, A.ID_BOMBA, B.descbomba, A.DIA, A.Litros, A.Valor, A.Aliquota, A.Imposto  FROM abastecimentos A INNER JOIN bombas B ON B.id = A.id_bomba';
+  Result := 'SELECT A.ID, A.ID_BOMBA, B.descbomba, A.DIA, A.Litros, A.Valor, A.Aliquota, A.Imposto  FROM abastecimentos A INNER JOIN bombas B ON B.id = A.id_bomba order by A.dia';
 end;
 
 function TDM.SQLBombas: String;

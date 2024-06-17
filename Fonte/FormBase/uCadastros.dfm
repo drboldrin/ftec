@@ -21,9 +21,8 @@ object FormPadrao: TFormPadrao
     Height = 41
     Align = alBottom
     TabOrder = 0
-    ExplicitLeft = 256
-    ExplicitTop = 232
-    ExplicitWidth = 185
+    ExplicitTop = 292
+    ExplicitWidth = 486
     DesignSize = (
       490
       41)
@@ -77,7 +76,7 @@ object FormPadrao: TFormPadrao
       OnClick = btnExcluirClick
     end
     object btnFechar: TBitBtn
-      Left = 405
+      Left = 401
       Top = 6
       Width = 75
       Height = 28
@@ -87,7 +86,7 @@ object FormPadrao: TFormPadrao
       ShowHint = True
       TabOrder = 5
       OnClick = btnFecharClick
-      ExplicitLeft = 543
+      ExplicitLeft = 397
     end
     object btnGravar: TBitBtn
       Left = 165
@@ -111,7 +110,8 @@ object FormPadrao: TFormPadrao
     ActivePage = tbsGrid
     Align = alClient
     TabOrder = 1
-    ExplicitWidth = 500
+    ExplicitWidth = 486
+    ExplicitHeight = 292
     object tbsGrid: TTabSheet
       Caption = 'tbsGrid'
       TabVisible = False
@@ -124,9 +124,7 @@ object FormPadrao: TFormPadrao
         BevelInner = bvRaised
         BevelOuter = bvLowered
         TabOrder = 0
-        ExplicitLeft = 112
-        ExplicitTop = 48
-        ExplicitWidth = 185
+        ExplicitWidth = 478
         DesignSize = (
           482
           41)
@@ -145,7 +143,7 @@ object FormPadrao: TFormPadrao
           Anchors = [akTop, akRight]
           Caption = 'Filtrar'
           TabOrder = 0
-          ExplicitLeft = 411
+          ExplicitLeft = 397
         end
         object edtFiltro: TEdit
           Left = 52
@@ -155,6 +153,7 @@ object FormPadrao: TFormPadrao
           Anchors = [akLeft, akTop, akRight]
           TabOrder = 1
           OnExit = edtFiltroExit
+          ExplicitWidth = 329
         end
       end
       object GridRegistros: TDBGrid
@@ -177,5 +176,14 @@ object FormPadrao: TFormPadrao
       ImageIndex = 1
       TabVisible = False
     end
+  end
+  object FDQuery1: TFDQuery
+    Left = 324
+    Top = 206
+  end
+  object FDUpdateSQL1: TFDUpdateSQL
+    Connection = DM.Connection
+    Left = 404
+    Top = 206
   end
 end

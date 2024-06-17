@@ -1,0 +1,3 @@
+Firebird versão 3.0
+Caminho base Fixado dmPrincipal
+Path: C:\FortesTec\DB\POSTOABC.FDB
